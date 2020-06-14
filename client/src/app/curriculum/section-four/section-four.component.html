@@ -1,0 +1,33 @@
+	<!--work-experience-->
+	<div id="work" class="work">
+		<div class="container">
+			<h3 class="title">Experiencia Laboral</h3>
+			<div *ngFor="let obj of workExperienceAll">
+				<div *ngIf="obj.stylecss == 1">
+					<div class="work-info"> 
+						<div class="col-md-6 work-left"> 
+							<h4>{{obj.date_company}} </h4>
+						</div>
+						<div class="col-md-6 work-right"> 
+							<h5><span class="glyphicon glyphicon-briefcase"> </span> {{obj.company}}</h5>
+							<p>{{obj.activities}} </p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div *ngIf="obj.stylecss == 0">
+					<div class="work-info"> 
+						<div class="col-md-6 work-right work-right2"> 
+							<h4>{{obj.date_company}} </h4>
+						</div>
+						<div class="col-md-6 work-left work-left2"> 
+							<h5 style="height: 42px; padding-top: 5px;">{{obj.company}} <span class="glyphicon glyphicon-briefcase"> </span></h5>
+							<p>{{obj.activities}} </p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//work-experience-->

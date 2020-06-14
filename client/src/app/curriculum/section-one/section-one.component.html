@@ -1,0 +1,49 @@
+	<!--banner-->
+	<div id="home" class="banner">
+		<div class="banner-info">
+			<div class="container">
+				<div class="col-md-4 header-left">
+					<img src="assets/images/img1.jpg" alt=""/>
+				</div>
+				<div class="col-md-8 header-right">
+					<h2>{{cheers}}</h2>
+					<h1>Yo soy, {{dataHeader.name}}</h1>
+					<h6>{{dataHeader.profession}}</h6>
+					<ul class="address">
+						<li>
+							<ul class="address-text">
+								<li><b>Mi Edad </b></li>
+								<li>{{dataHeader.age}} Años</li><br>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>Telefono </b></li>
+								<li>+571 {{dataHeader.phone}}</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>Dirección </b></li>
+								<li>{{dataHeader.address}}</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>E-Mail </b></li>
+								<li><a href="mailto:{{dataHeader.mail}}"> {{dataHeader.mail}}</a></li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>Hangoust </b></li>
+								<li><a href="mailto:{{dataHeader.hangouts_google}}">{{dataHeader.hangouts_google}}</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
