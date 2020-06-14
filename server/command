@@ -1,0 +1,29 @@
+#Vigilar por los cambios 
+npm run build
+#compilar TypeScript
+tsc
+#Inicialiar 
+tsc --init
+#instlar TypeScript
+npm install -g typescript
+#Compilar un archivo especifico
+tsc helloworld.ts
+#Ejecutar JS con node
+node + archivo js
+#instalar en Dev
+npm i nodemon -D
+
+#ejecutar vigilantes 
+npm run dev - npm run 
+
+#reconosca comandos de express en dev
+npm i @types/express -D
+npm install @types/morgan -D
+npm install @types/cors -D
+npm i promise-mysql@3.3.1
+
+#Token 
+npm i @types/jsonwebtoken -D
+npm i jsonwebtoken
+
+
