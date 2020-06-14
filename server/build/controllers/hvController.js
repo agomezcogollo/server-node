@@ -28,13 +28,28 @@ class HVController {
         });
     }
     skill(req, res) {
-        res.json('Table skill');
+        return __awaiter(this, void 0, void 0, function* () {
+            const skillList = yield database_1.default.query('SELECT * FROM skills WHERE profile_id = ? ', req.userIdDb);
+            if (!skillList)
+                return res.status(404).json('No Found cod. 14563');
+            res.json(skillList);
+        });
     }
     education(req, res) {
-        res.json('Table education');
+        return __awaiter(this, void 0, void 0, function* () {
+            const educationList = yield database_1.default.query('SELECT * FROM educations WHERE profile_id = ? ', req.userIdDb);
+            if (!educationList)
+                return res.status(404).json('No Found cod. 14563');
+            res.json(educationList);
+        });
     }
     experience(req, res) {
-        res.json('Table experience');
+        return __awaiter(this, void 0, void 0, function* () {
+            const experienceList = yield database_1.default.query('SELECT * FROM experiences WHERE profile_id = ? ', req.userIdDb);
+            if (!experienceList)
+                return res.status(404).json('No Found cod. 14563');
+            res.json(experienceList);
+        });
     }
     deletetest(req, res) {
         res.json('Table deletetest ' + req.params.id);

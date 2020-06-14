@@ -13,7 +13,7 @@ exports.TokenValidation = (req, res, next) => {
     try {
         const playLoad = jsonwebtoken_1.default.verify(token, config_1.default.keyjwt.keyprivate);
         req.userId = playLoad.user;
-        console.log(playLoad);
+        req.userIdDb = playLoad.idUser;
         next();
     }
     catch (error) {

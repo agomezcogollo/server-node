@@ -16,16 +16,22 @@ class HVController {
     res.json(profilesList)
   } 
 
-  public skill (req: Request, res:Response) {
-    res.json('Table skill')
+  public async skill (req: Request, res:Response) {
+    const skillList = await db.query('SELECT * FROM skills WHERE profile_id = ? ', req.userIdDb);
+    if (!skillList) return res.status(404).json('No Found cod. 14563')
+    res.json(skillList)
   } 
 
-  public education (req: Request, res:Response) {
-    res.json('Table education')
+  public async education (req: Request, res:Response) {
+    const educationList = await db.query('SELECT * FROM educations WHERE profile_id = ? ', req.userIdDb);
+    if (!educationList) return res.status(404).json('No Found cod. 14563')
+    res.json(educationList)
   } 
 
-  public experience (req: Request, res:Response) {
-    res.json('Table experience')
+  public async experience (req: Request, res:Response) {
+    const experienceList = await db.query('SELECT * FROM experiences WHERE profile_id = ? ', req.userIdDb);
+    if (!experienceList) return res.status(404).json('No Found cod. 14563')
+    res.json(experienceList)
   } 
 
   public deletetest (req: Request, res:Response) {

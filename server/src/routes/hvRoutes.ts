@@ -14,9 +14,10 @@ class hvRoute {
   config(): void {
     this.router.get('/', hvController.index );
     this.router.post('/profileall', TokenValidation, hvController.profileall );
-    this.router.post('/skill', hvController.skill );
-    this.router.post('/education', hvController.education );
-    this.router.delete('/:id', hvController.deletetest );
+    this.router.post('/skill', TokenValidation, hvController.skill );
+    this.router.post('/experiences', TokenValidation, hvController.experience );
+    this.router.post('/education', TokenValidation, hvController.education );
+    //this.router.delete('/:id', hvController.deletetest );
   }
 
 }

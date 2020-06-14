@@ -19,10 +19,10 @@ class AuthController {
     authM(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //res.send('Hola Mundo IndexController')
-            const userSystemLogin = yield database_1.default.query('SELECT * FROM users WHERE email = ? AND password_node = ? ', [req.body.user, req.body.password]);
+            const userSystemLogin = yield database_1.default.query('SELECT * FROM users WHERE email = ? AND password_node = ? ', [req.body.email, req.body.password]);
             if (!(Object.keys(userSystemLogin).length === 0)) {
                 let DateNow = new Date();
-                const tokenWeb = jsonwebtoken_1.default.sign({ user: req.body.user, date: DateNow }, config_1.default.keyjwt.keyprivate, { expiresIn: 60 * 60 * 24 });
+                const tokenWeb = jsonwebtoken_1.default.sign({ user: req.body.email, idUser: userSystemLogin[0]['id'], date: DateNow }, config_1.default.keyjwt.keyprivate, { expiresIn: 60 * 60 * 24 });
                 res.json({ status: '200', token: tokenWeb });
             }
             else {

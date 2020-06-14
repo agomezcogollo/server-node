@@ -8,11 +8,11 @@ class AuthController {
   public async authM (req: Request, res:Response) {
     //res.send('Hola Mundo IndexController')
     const userSystemLogin = await db.query('SELECT * FROM users WHERE email = ? AND password_node = ? ',
-                                          [req.body.user, req.body.password]);
+                                          [req.body.email, req.body.password]);
     if (!(Object.keys(userSystemLogin).length === 0)) {
       let DateNow = new Date();
       const tokenWeb: string =
-        jwt.sign({ user: req.body.user, date: DateNow },
+        jwt.sign({ user: req.body.email, idUser: userSystemLogin[0]['id'], date: DateNow },
           keysdba.keyjwt.keyprivate, { expiresIn: 60 * 60 * 24 } )
       res.json({status:'200',token:tokenWeb})
     } else {
