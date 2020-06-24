@@ -1,0 +1,7 @@
+{
+  "name": "hvMobileAg",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+   
+      <span>Usted debe Ingresar al sistema primero</span><br><br>
+      <div class="row h-100 justify-content-center align-items-center">
+        <form (ngSubmit)="logForm()">
+          <div class="col-md-12 mb-3">
+            <label for="exampleInputEmail1">Correo Electrónico</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Su correo electrónico debe estar registrado</small>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="exampleInputPassword1">Clave Secreta</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+      </div>
+    
+  </div>
+  
+</ion-content>
+
+
+
+

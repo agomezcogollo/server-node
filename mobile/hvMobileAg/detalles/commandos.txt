@@ -1,0 +1,16 @@
+#Instalar un repo new
+ionic start
+#levantar servidor
+ionic serve
+#Instalar Capacitor
+npm install --save @capacitor/core @capacitor/cli
+#Inicializar Capacitor 
+npx cap init
+# Compilar Ionic
+ionic build 
+# Añadir proyecto Android
+npx cap add android
+# Abrir proyecto
+npx cap open android
+
+#ionic generate
