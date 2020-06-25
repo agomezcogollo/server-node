@@ -13,12 +13,23 @@ class AuthController {
       let DateNow = new Date();
       const tokenWeb: string =
         jwt.sign({ user: req.body.email, idUser: userSystemLogin[0]['id'], date: DateNow },
-          keysdba.keyjwt.keyprivate, { expiresIn: 60 * 60 * 24 } )
+          keysdba.keyjwt.keyprivate, { expiresIn: 60 * 60 })
+          // 60S * 60M * 24H
       res.json({status:'200',token:tokenWeb})
     } else {
-      res.status(401).json('Acces Denied');
+      res.status(401).json('Access Denied');
     }
-  } 
+  }
+
+  public verifyTk(req: Request, res: Response) {
+    console.log('Consulta de Token')
+    res.status(201).json('success');
+  }
+
+  public destroyTk(req: Request, res: Response) {
+    console.log('Token Destruido')
+    res.status(201).json('success');
+  }
 
 }
 

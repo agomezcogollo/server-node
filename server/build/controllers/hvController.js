@@ -21,9 +21,32 @@ class HVController {
     }
     profileall(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const profilesList = yield database_1.default.query('SELECT * FROM profiles WHERE mail = ? ', req.userId);
+            const profilesList = yield database_1.default.query('SELECT * FROM profiles');
             if (!profilesList)
                 return res.status(404).json('No Found cod. 14563');
+            res.json(profilesList);
+        });
+    }
+    profileid(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const body = req.body;
+            const profilesList = yield database_1.default.query('SELECT * FROM profiles WHERE id = ? ', body.id_search);
+            if (!profilesList)
+                return res.status(404).json('No Found cod. 14563');
+            res.json(profilesList);
+        });
+    }
+    profileUpd(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const body = req.body;
+            console.log(body);
+            const profilesList = yield database_1.default.query('UPDATE `profiles` SET `name` = ?, `profession` = ?, `age` = ?, `phone` = ?, `address` = ?, `mail` = ?, `hangouts_google` = ?, `about_me` = ? WHERE (`id` = ?); ', [body.name_profile, body.profession_profile, body.age_profile, body.phone_profile, body.address_profile, body.mail_profile, body.hangouts_google_profile, body.about_me_profile, body.id_profile]);
+            if (!profilesList)
+                return res.status(404).json('No Found cod. 14563');
+            if (profilesList.changedRows == 1)
+                return res.status(201).json('success');
+            if (profilesList.changedRows == 0)
+                return res.status(201).json('not change');
             res.json(profilesList);
         });
     }

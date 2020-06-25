@@ -14,6 +14,8 @@ class hvRoute {
   config(): void {
     this.router.get('/', hvController.index );
     this.router.post('/profileall', TokenValidation, hvController.profileall );
+    this.router.post('/profileid', TokenValidation, hvController.profileid );
+    this.router.put('/profileupd', TokenValidation, hvController.profileUpd );
     this.router.post('/skill', TokenValidation, hvController.skill );
     this.router.post('/experiences', TokenValidation, hvController.experience );
     this.router.post('/education', TokenValidation, hvController.education );

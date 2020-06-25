@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import authController from '../controllers/authController';
+import { TokenValidation, TokenDestroy } from '../controllers/verifyTokenController'
 
 class AuthRoute {
 
@@ -11,10 +12,8 @@ class AuthRoute {
 
   config(): void {
     this.router.post('/', authController.authM);
-    // this.router.post('/profileall', hvController.profileall );
-    // this.router.post('/skill', hvController.skill );
-    // this.router.post('/education', hvController.education );
-    // this.router.delete('/:id', hvController.deletetest );
+    this.router.post('/verifi-tk', TokenValidation, authController.verifyTk);
+    this.router.post('/sing-out', TokenDestroy, authController.destroyTk);
   }
 
 }

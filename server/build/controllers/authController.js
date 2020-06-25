@@ -22,13 +22,22 @@ class AuthController {
             const userSystemLogin = yield database_1.default.query('SELECT * FROM users WHERE email = ? AND password_node = ? ', [req.body.email, req.body.password]);
             if (!(Object.keys(userSystemLogin).length === 0)) {
                 let DateNow = new Date();
-                const tokenWeb = jsonwebtoken_1.default.sign({ user: req.body.email, idUser: userSystemLogin[0]['id'], date: DateNow }, config_1.default.keyjwt.keyprivate, { expiresIn: 60 * 60 * 24 });
+                const tokenWeb = jsonwebtoken_1.default.sign({ user: req.body.email, idUser: userSystemLogin[0]['id'], date: DateNow }, config_1.default.keyjwt.keyprivate, { expiresIn: 60 * 60 });
+                // 60S * 60M * 24H
                 res.json({ status: '200', token: tokenWeb });
             }
             else {
-                res.status(401).json('Acces Denied');
+                res.status(401).json('Access Denied');
             }
         });
+    }
+    verifyTk(req, res) {
+        console.log('Consulta de Token');
+        res.status(201).json('success');
+    }
+    destroyTk(req, res) {
+        console.log('Token Destruido');
+        res.status(201).json('success');
     }
 }
 const authController = new AuthController();

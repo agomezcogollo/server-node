@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const authController_1 = __importDefault(require("../controllers/authController"));
+const verifyTokenController_1 = require("../controllers/verifyTokenController");
 class AuthRoute {
     constructor() {
         this.router = express_1.Router();
@@ -12,10 +13,8 @@ class AuthRoute {
     }
     config() {
         this.router.post('/', authController_1.default.authM);
-        // this.router.post('/profileall', hvController.profileall );
-        // this.router.post('/skill', hvController.skill );
-        // this.router.post('/education', hvController.education );
-        // this.router.delete('/:id', hvController.deletetest );
+        this.router.post('/verifi-tk', verifyTokenController_1.TokenValidation, authController_1.default.verifyTk);
+        this.router.post('/sing-out', verifyTokenController_1.TokenDestroy, authController_1.default.destroyTk);
     }
 }
 const authRouter = new AuthRoute();
