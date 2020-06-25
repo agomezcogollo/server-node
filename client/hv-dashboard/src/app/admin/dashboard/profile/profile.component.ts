@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MasterService } from '../../../services/master.service'
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,13 +15,23 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private _curriculumService: MasterService,
-    private router: Router,
+    private router: Router
   ) {
-    let StoraToken_ = localStorage.getItem('toke_');
-    if (StoraToken_ == null) {
-      this.router.navigate(['/login'])
-    }
     this.editProfileHtml()
+    let StoraToken_ = localStorage.getItem('toke_');
+    _curriculumService.getDataTokenverify(StoraToken_).subscribe(
+      response => {
+        if (response != 'success') {
+          localStorage.removeItem('toke_');
+          localStorage.clear()
+          this.router.navigate(['login'])
+        }
+      },
+      error => {
+        console.log('Entro en error');
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -31,11 +41,9 @@ export class ProfileComponent implements OnInit {
     this._curriculumService.getDataProfileall().subscribe(
       response => {
         this.dataHtmlProfile = response
-        //console.log(response)
-        //this.router.navigate(['/dashboard/profile'])
       },
       error => {
-        //this.show = true
+        console.log('Entro en error');
         console.log(error);
       }
     );

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { global } from './global';
 import { Observable, from } from 'rxjs';
 import { UserModule } from '../models/user/user.module';
+import { ProfileIdModule } from '../models/profileId.module';
+import { ProfilesUpd } from '../models/profileUpd';
 
 @Injectable({
   providedIn: 'root'
@@ -19,39 +21,43 @@ export class MasterService {
     this.url = global.url;
   }
 
-  getDataToken(): Observable<any> {
-    let user1 = new UserModule('amilkargomez@hotmail.es', 'node123456');
-    //let params = JSON.stringify(user1);
-    //let paramsJosn = 'json=' + params;
-    //let Headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    //return this.http.post(this.baseURL + 'people', body,{'headers':headers})
-    const headers = { 'content-type': 'application/json'}  
-    const body = JSON.stringify(user1);
-    return this._http.post(this.url + 'auth', body , {'headers':headers} );
+  loggedIn():boolean {
+    return !!localStorage.getItem('toke_');
   }
   getDataTokenParams(data1:any, data2:any): Observable<any> {
     let user1 = new UserModule(data1, data2);
-    //let params = JSON.stringify(user1);
-    //let paramsJosn = 'json=' + params;
-    //let Headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    //return this.http.post(this.baseURL + 'people', body,{'headers':headers})
-    const headers = { 'content-type': 'application/json'}  
+    const headers = { 'content-type': 'application/json'}
     const body = JSON.stringify(user1);
     return this._http.post(this.url + 'auth', body , {'headers':headers} );
+  }
+  getDataTokenverify(dataToken:any): Observable<any> {
+    const headers = {'content-type': 'application/json', 'Authorization': dataToken}  
+    return this._http.post(this.url + 'auth/verifi-tk', '', {'headers':headers} );
   }
   getDataProfileall(): Observable<any> {
       let StoraToken_ = localStorage.getItem('toke_');
       let Headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                     .set('Authorization', StoraToken_);
-      //let parameters = new HttpHeaders();
-      //parameters = parameters.set('Authorization', "Bearer " + StoraToken_);
       return this._http.post(this.url + 'hv/profileall', '', {headers: Headers});
   }
   getDataProfileallID(id:any): Observable<any> {
       let StoraToken_ = localStorage.getItem('toke_');
-      let Headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-                                    .set('Authorization', StoraToken_);
-      return this._http.post(this.url + 'hv/profileall', '', {headers: Headers});
+      let dataSend = new ProfileIdModule(id);
+      const headers = {'content-type': 'application/json', 'Authorization': StoraToken_}  
+      const body = JSON.stringify(dataSend);
+      return this._http.post(this.url + 'hv/profileid', body , {'headers':headers} );
+  }
+  setDataProfileUpd(data:any): Observable<any> {
+      let StoraToken_ = localStorage.getItem('toke_');
+      let dataSend = new ProfilesUpd(data.idProfile,data.nameProfile,data.professionProfile,data.mobileProfile,data.cityProfile,data.emailProfile,data.emailGoogleProfile,data.aboutMeProfile,data.ageProfile);
+      const headers = {'content-type': 'application/json', 'Authorization': StoraToken_}
+      const body = JSON.stringify(dataSend);
+      return this._http.put(this.url + 'hv/profileupd', body , {'headers':headers} );
+  }
+  setTokenDown(): Observable<any> {
+    let StoraToken_ = localStorage.getItem('toke_');
+    const headers = {'content-type': 'application/json', 'Authorization': StoraToken_}
+    return this._http.post(this.url + 'auth/sing-out', '', {'headers':headers} );
   }
   getDataExperiences(): Observable<any> {
       let StoraToken_ = localStorage.getItem('toke_');

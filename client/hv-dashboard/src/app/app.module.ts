@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+// Importamos el módulo de formularios
+import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Importaando componetes 
 import { LoginComponent } from './admin/login/login.component'
@@ -11,6 +14,9 @@ import { HomeComponent } from './admin/dashboard/home/home.component'
 import { ProfileComponent } from './admin/dashboard/profile/profile.component';
 import { FooterComponent } from './admin/dashboard/footer/footer.component';
 import { ProfileEditComponent } from './admin/dashboard/profile-edit/profile-edit.component'
+
+// Importando guardian 
+import { AuthGuard } from "./guard/auth.guard";
 
 @NgModule({
   declarations: [
@@ -24,9 +30,11 @@ import { ProfileEditComponent } from './admin/dashboard/profile-edit/profile-edi
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

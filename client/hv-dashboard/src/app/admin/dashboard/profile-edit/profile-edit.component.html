@@ -29,39 +29,40 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form">
-                      <div class="card-body">
+                    <form role="form" #myform="ngForm" (ngSubmit)="onClickSubmit(myform)">
+                      <div *ngFor="let item of dataHtmlProfile" class="card-body">
+                        <input type="hidden" class="form-control" name="idProfile" [(ngModel)]="item.id">
                         <div class="form-group">
                           <label for="nameProfile">Nombre Completo</label>
-                          <input type="text" class="form-control" id="nameProfile" placeholder="Nombre">
+                          <input type="text" class="form-control" id="nameProfile" name="nameProfile" [(ngModel)]="item.name" placeholder="Nombre Completo">
                         </div>
                         <div class="form-group">
                           <label for="professionProfile">Profesión</label>
-                          <input type="text" class="form-control" id="professionProfile" placeholder="Profesión">
+                          <input type="text" class="form-control" [(ngModel)]="item.profession" id="professionProfile" name=professionProfile placeholder="Profesión">
                         </div>
                         <div class="form-group">
                           <label for="ageProfile">Edad</label>
-                          <input type="number" class="form-control" id="ageProfile" placeholder="Edad">
+                          <input type="number" class="form-control" [(ngModel)]="item.age" id="ageProfile" name="ageProfile" placeholder="Edad">
                         </div>
                         <div class="form-group">
                           <label for="mobileProfile">Teléfono</label>
-                          <input type="text" class="form-control" id="mobileProfile" placeholder="Teléfono">
+                          <input type="text" class="form-control" id="mobileProfile" [(ngModel)]="item.phone" name="mobileProfile" placeholder="Teléfono">
                         </div>
                         <div class="form-group">
                           <label for="cityProfile">Ciudad</label>
-                          <input type="text" class="form-control" id="cityProfile" placeholder="Ciudad">
+                          <input type="text" class="form-control" id="cityProfile" [(ngModel)]="item.address" name="cityProfile" placeholder="Ciudad">
                         </div>
                         <div class="form-group">
                           <label for="emailProfile">Correo Electónico</label>
-                          <input type="mail" class="form-control" id="emailProfile" placeholder="Correo Electónico">
+                          <input type="mail" class="form-control" id="emailProfile" [(ngModel)]="item.mail" name="emailProfile" placeholder="Correo Electónico">
                         </div>
                         <div class="form-group">
                           <label for="hangoutsGoogleProfile">Hangouts Google</label>
-                          <input type="mail" class="form-control" id="emailProfile" placeholder="Hangouts Google">
+                          <input type="mail" class="form-control" id="emailGoogleProfile" [(ngModel)]="item.hangouts_google" name="emailGoogleProfile" placeholder="Hangouts Google">
                         </div>
                         <div class="form-group">
                           <label for="aboutMeProfile">Acerca de mí</label>
-                          <textarea rows="3" class="form-control" id="aboutMeProfile" placeholder="Acerca de mí"></textarea>
+                          <textarea rows="3" class="form-control" id="aboutMeProfile" [(ngModel)]="item.about_me" name="aboutMeProfile" placeholder="Acerca de mí"></textarea>
                         </div>
                       </div>
                       <!-- /.card-body -->
