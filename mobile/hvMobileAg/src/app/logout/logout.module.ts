@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { FolderPageRoutingModule } from './logout-routing.module';
 
-import { LoginPage } from './login.page';
+import { LogoutPage } from './logout.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    FolderPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [LogoutPage]
 })
-export class LoginPageModule {}
+export class LogoutModule {}

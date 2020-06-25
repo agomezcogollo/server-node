@@ -1,26 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MasterService } from '../master.service';
+import { Router } from "@angular/router";
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  providers: [ MasterService ]
 })
 export class LoginPage implements OnInit {
+  
   public folder: string;
-  //form: FormGroup;
+  show: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private _serviceMaster: MasterService,
+    private router: Router,
+  ){ }
 
-  ngOnInit() {
-    //this.folder = 'Inicio'
-    //this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-  }
+  ngOnInit() { }
 
-  logForm() { 
-    console.log('Hola Amilcar')
-    //console.log(this.form.value)
+  logForm(myform) { 
+    
+    this._serviceMaster.getDataTokenParams(myform.value.email,myform.value.password).subscribe(
+      response => {
+        localStorage.setItem('toke_', response.token)
+        this.router.navigate(['home']) 
+      },
+      error => {
+        this.show = true
+        console.log(error)
+      }
+    );
+    return false
+    
   }
 
 }

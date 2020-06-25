@@ -13,14 +13,9 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Resumen',
+      title: 'Perfil General',
       url: '/home',
       icon: 'home'
-    },
-    {
-      title: 'Perfil Gral',
-      url: '/folder/Favorites',
-      icon: 'person'
     },
     {
       title: 'Mi Educación',
@@ -41,6 +36,11 @@ export class AppComponent implements OnInit {
       title: 'Multimedia',
       url: '/multimedia/data',
       icon: 'images'
+    },
+    {
+      title: 'Salir del Sistema',
+      url: '/sign-off',
+      icon: 'person'
     },
   ];
 

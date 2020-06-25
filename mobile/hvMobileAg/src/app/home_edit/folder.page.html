@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <!-- <strong class="capitalize">{{ folder }}</strong><br> -->
+    <!-- <p>Amilcar Gomez<a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+    
+  <form padding-right #myform="ngForm" (ngSubmit)="onClickSubmit(myform)">
+    <div *ngFor="let item of dataHtmlProfile">
+      <ion-list>
+        <input type="hidden" class="form-control" name="idProfile" [(ngModel)]="item.id">
+        <ion-item>
+          <ion-label position="floating">Nombre Completo</ion-label>
+          <ion-input name="nameProfile" [(ngModel)]="item.name" type="text" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Profesión</ion-label>
+          <ion-input type="text" [(ngModel)]="item.profession" name="professionProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+          <ion-input type="text" [(ngModel)]="item.age" name="ageProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Teléfono</ion-label>
+          <ion-input type="text" [(ngModel)]="item.phone" name="mobileProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Ciudad</ion-label>
+          <ion-input type="text" [(ngModel)]="item.address" name="cityProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo Electónico</ion-label>
+          <ion-input type="text" [(ngModel)]="item.mail" name="emailProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Hangouts Google</ion-label>
+          <ion-input type="text" [(ngModel)]="item.hangouts_google" name="emailGoogleProfile" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Acerca de mí</ion-label>
+          <ion-input type="text" [(ngModel)]="item.about_me" name="aboutMeProfile" required></ion-input>
+        </ion-item>
+        <ion-button type="submit" color="primary" expand="block">Actualizar Perfil</ion-button>
+      </ion-list>
+    </div>
+  </form>
+
+  </div>  
+</ion-content>

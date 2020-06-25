@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+// Importando guardian
+import { AuthGuard } from './auth-url.guard'
+
 const routes: Routes = [
   {
     path: '',
@@ -17,7 +20,18 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'home-edit',
+    loadChildren: () => import('./home_edit/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'sign-off',
+    loadChildren: () => import('./logout/logout.module').then(m => m.LogoutModule),
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

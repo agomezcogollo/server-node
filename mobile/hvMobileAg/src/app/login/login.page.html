@@ -18,18 +18,20 @@
    
       <span>Usted debe Ingresar al sistema primero</span><br><br>
       <div class="row h-100 justify-content-center align-items-center">
-        <form (ngSubmit)="logForm()">
+        <form #myform="ngForm" (ngSubmit)="logForm(myform)">
           <div class="col-md-12 mb-3">
-            <label for="exampleInputEmail1">Correo Electrónico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="forEmail1">Correo Electrónico</label>
+            <input ngModel name="email" type="email" class="form-control" id="forEmail1" aria-describedby="emailHelp" required>
             <small id="emailHelp" class="form-text text-muted">Su correo electrónico debe estar registrado</small>
           </div>
           <div class="col-md-12 mb-3">
-            <label for="exampleInputPassword1">Clave Secreta</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="forPassword">Clave Secreta</label>
+            <input ngModel name="password" type="password" class="form-control" id="forPassword" required>
           </div>
           <button type="submit" class="btn btn-primary">Entrar</button>
+          <br><br><span *ngIf="show" style="color: red;"><strong>Error de Credenciales</strong></span>
         </form>
+        
       </div>
     
   </div>
