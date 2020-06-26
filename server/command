@@ -26,4 +26,6 @@ npm i promise-mysql@3.3.1
 npm i @types/jsonwebtoken -D
 npm i jsonwebtoken
 
+Desplegar 
+npm install
 

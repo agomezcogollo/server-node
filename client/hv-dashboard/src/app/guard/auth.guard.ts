@@ -7,9 +7,6 @@ import { MasterService } from '../services/master.service';
 })
 export class AuthGuard implements CanActivate {
 
-  //tokenNowAct: boolean;
-  basePath = 'http://localhost:3000/api/'
-
   constructor(
     private _authServive: MasterService,
     private router: Router,

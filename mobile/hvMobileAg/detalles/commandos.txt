@@ -14,3 +14,4 @@ npx cap add android
 npx cap open android
 
 #ionic generate
+ionic generate
